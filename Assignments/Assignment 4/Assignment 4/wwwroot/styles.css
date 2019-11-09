@@ -1,0 +1,12 @@
+#starWarsPhoto {
+    height: 30%;
+    width: auto;
+    position: fixed;
+    right: 6%;
+    top: 6%
+}
+
+body {
+    background-color: gray;
+    font-size: 1.3em;
+}

@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Assignment 3</title>
+
+        <link rel="stylesheet" type = "text/css" href = "styles.css"></link>
+        <script src = "common.js"></script>
+        <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+    </head>
+
+    <body>
+        <div class="forms" id="formOne">
+            <h1>Favorite Character</h1>
+            <form>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName">
+                <br/>
+
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName">
+                <br/>
+
+                <label for="favoriteCharacter">Favorite Character</label>
+                <input type="text" id="favoriteCharacter">
+                <br/><br/>
+                <input type="button" id="forcePush" value="Force Push">
+                <input type="button" id="forcePull" value="Force Pull">
+                <input type="button" id="forceRead" value="Force Read">
+            </form>
+        </div>
+        <br/><br/><br/>
+        <div class="forms" id="formTwo">
+            <form>
+                <label for="viewDate">View Date</label>
+                <input type="text" id="viewDate">
+                <br/><br/>
+                <input type="button" id="watchMovies" value="Watch Movies">
+                <input type="button" id="forceInsight" value="Force Insight">
+            </form>
+        </div>
+
+        <div class="photo">
+            <img id="starWarsPhoto" src="https://vignette.wikia.nocookie.net/starwars/images/c/cc/Star-wars-logo-new-tall.jpg/revision/latest?cb=20190313021755" alt="Star wars">
+        </div>
+
+        <div id="error"></div>
+        <div id="results"></div>
+    </body>
+</html>

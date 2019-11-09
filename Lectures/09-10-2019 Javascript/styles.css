@@ -1,0 +1,48 @@
+.body-class{
+    background-color: lightgoldenrodyellow;
+    font-size: 2em;
+}
+
+.sad{
+    background-color: cornflowerblue;
+}
+
+.happy{
+    background-color: deeppink
+}
+
+.important{
+    color: red;
+    font-style: italic;
+}
+
+.absolute{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+.fixed{
+    position: fixed;
+    top: 30%;
+    left: 30%;
+}
+
+li{
+    font-weight: 600;
+
+}
+
+ul.warning li{
+    background-color: crimson;
+    color: yellow;
+    font-size: 4em;
+    font-weight: 900;
+    font-style: italic;
+}
+
+#span-two{
+    color: darkblue;
+    font-style: italic;
+    font-weight: 900;
+}

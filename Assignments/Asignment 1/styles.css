@@ -1,0 +1,46 @@
+.superhero {
+    color: whitesmoke;
+    font-size: 2em;
+}
+
+.split {
+    background: linear-gradient(to right,  rgb(2, 122, 2) 0%,rgb(2, 122, 2) 50%,rgb(0, 0, 0) 50%,rgb(0, 0, 0) 100%);
+}
+
+.splitRev {
+    background: linear-gradient(to right,  rgb(0, 0, 0) 0%,rgb(0, 0, 0) 50%,rgb(2, 122, 2) 50%, rgb(2, 122, 2) 100%);
+}
+
+.photo {
+    width: 75%;
+    height: auto;
+}
+
+.heroTitle {
+    position: absolute;
+    left: 15%;
+    top: 10%;
+    background-color: antiquewhite;
+    font-size: 2em;
+}
+
+.disclaimer {
+    position: fixed;
+    right: 15%;
+    bottom: 15%;
+    background-color: black;
+    color: antiquewhite;
+    font-size: 2em; 
+}
+
+.proof {
+    position: fixed;
+    right: 0%;
+    top: 20%;
+}
+
+#colors {
+    font-size: 3em;
+    background-color: black;
+    color: antiquewhite;
+}

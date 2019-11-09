@@ -1,0 +1,35 @@
+﻿<link rel="stylesheet" href="~/css/styles.css" />
+
+@model SpellsDatabase
+
+@{
+    ViewData["Title"] = "Spells";
+}
+
+@if (Model.Any())
+{
+    <ol>
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            @if (i % 2 != 0)
+            {
+                <li class="odd">@Model.Get(i).Name <a href="spells/viewSpell/@i">View Spell</a></li>
+            }
+            else
+            {
+                <li>@Model.Get(i).Name <a href="spells/viewSpell/@i">View Spell</a></li>
+            }
+
+        }
+    </ol>
+
+}
+else
+{
+    <div>There are no spells to display</div>
+}
+
+<form method="post" action="spells/add">
+    <input type="text" name="spellName" required="" />
+    <input type="submit" value="Add" />
+</form>

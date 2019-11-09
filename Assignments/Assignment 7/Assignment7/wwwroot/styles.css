@@ -1,0 +1,89 @@
+body {
+    background-color: aqua;
+}
+
+#success {
+    font-size: 3em;
+    color: white;
+}
+
+#error {
+    font-size: 3em;
+    color: red;
+}
+
+#mario {
+    z-index: 1;
+    position: absolute;
+    left: 0%;
+    bottom: 10%;
+}
+
+#marioImg {
+    height: auto;
+    width: 35%;
+}
+
+#ground {
+    display: inline;
+    position: absolute;
+    z-index: 0;
+    bottom: 0%;
+    left: 0%;
+    height: 12%;
+    width: 100%;
+    background-color: saddlebrown;
+    background-image: url("https://lh3.googleusercontent.com/ppyxww7MrJf3feQOrsAKexZo2rBU1zw07lZdQXCDk1qIJMU6hbiAFoatyw5vFXs-fP2dst-nW17vMLOEPpj1-w=s400");
+    background-repeat: repeat;
+}
+
+#flag {
+    position: absolute;
+    z-index: 1;
+    right: 4%;
+    bottom: 10%;
+}
+
+#koopa {
+    position: absolute;
+    top: 23%;
+    left: 60%;
+}
+
+#koopaImg {
+    height: auto;
+    width: 70%;
+}
+
+#shrooms {
+    position: absolute;
+    bottom: 10%;
+    left: 30%
+}
+
+#shroomsImg {
+    height: auto;
+    width: 7%
+}
+
+#box {
+    position: absolute;
+    top: 45%;
+    left: 40%;
+}
+
+#boxImg {
+    height: auto;
+    width: 25%;
+}
+
+#cloud {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+#cloudImg {
+    height: auto;
+    width: 50%;
+}

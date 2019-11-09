@@ -1,0 +1,18 @@
+﻿@model SpellsModel
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+
+<h1>@Model.Name</h1>
+
+<form method="post" action="/spells/delete">
+    <input type="submit" value="Delete" />
+    <input type="hidden" name="spellIndex" value="@ViewData["id"]" />
+</form>
+
+<form method="get" action="/">
+    <input type="submit" value="Cancel" />
+</form>
+
