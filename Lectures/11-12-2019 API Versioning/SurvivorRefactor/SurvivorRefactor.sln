@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurvivorRefactor", "SurvivorRefactor\SurvivorRefactor.csproj", "{F969002D-3744-4B50-A762-20D237E8F775}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F969002D-3744-4B50-A762-20D237E8F775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F969002D-3744-4B50-A762-20D237E8F775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F969002D-3744-4B50-A762-20D237E8F775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F969002D-3744-4B50-A762-20D237E8F775}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C8161C2-2D1D-42F6-8923-DA07644FF6D0}
+	EndGlobalSection
+EndGlobal
