@@ -23,18 +23,20 @@ namespace Gargoyles.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IEnumerable<GargoyleEntity> Get()
         {
-            // return all gargoyles here
-
-            return null;
+            var result = gargoylesDatabase.Get().Select(gargoyle => new GargoyleEntity(gargoyle.Value));
+            return result;
         }
 
 
         [HttpGet("{index}")]
         public IActionResult Get(string index)
         {
-            // we aren't doing index checking for the lecture. don't forget it
+            if (!gargoylesDatabase.Get().ContainsKey(index))
+            {
+                return StatusCode((int)HttpStatusCode.NotFound);
+            }
 
             var model = this.gargoylesDatabase.Get(index);
 
@@ -46,8 +48,10 @@ namespace Gargoyles.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] GargoyleEntity gargoyleEntity)
         {
-            // return a 4xx status code here if the gargoyle at that index already exists
-            // there is a better status code to use than the generic 400-BadRequest.
+            if (gargoylesDatabase.Get().ContainsKey(gargoyleEntity.Name))
+            {
+                return StatusCode((int)HttpStatusCode.Conflict);
+            }
 
             this.gargoylesDatabase.AddOrReplace(gargoyleEntity.ToModel());
 
@@ -57,9 +61,22 @@ namespace Gargoyles.Controllers
         [HttpPut("{index}")]
         public IActionResult Put(string index, [FromBody] GargoyleEntity gargoyleEntity)
         {
-            // we aren't doing index checking for the lecture. don't forget it
+            if (!gargoylesDatabase.Get().ContainsKey(index))
+            {
+                return StatusCode((int)HttpStatusCode.NotFound);
+            }
 
-            // add the ETag check if the gargoyle already exists.
+            if (!Request.Headers.TryGetValue("If-Match", out StringValues ifMatch))
+            {
+                return StatusCode((int)HttpStatusCode.PreconditionFailed);
+            }
+
+            var model = this.gargoylesDatabase.Get(gargoyleEntity.Name);
+
+            if (model.ETag() != ifMatch && model.ETag() != "*")
+            {
+                return StatusCode((int)HttpStatusCode.PreconditionFailed);
+            }
 
             this.gargoylesDatabase.AddOrReplace(gargoyleEntity.ToModel());
 
@@ -69,7 +86,10 @@ namespace Gargoyles.Controllers
         [HttpPatch("{index}")]
         public IActionResult Patch(string index, [FromBody] GargoyleEntity gargoyleEntity)
         {
-            // check if model exists first
+            if (!gargoylesDatabase.Get().ContainsKey(index))
+            {
+                return StatusCode((int)HttpStatusCode.NotFound);
+            }
 
             if (!Request.Headers.TryGetValue("If-Match", out StringValues ifMatch))
             {
@@ -78,8 +98,7 @@ namespace Gargoyles.Controllers
 
             var model = this.gargoylesDatabase.Get(gargoyleEntity.Name);
 
-            // add support for the wildcard if-match header here 
-            if (model.ETag() != ifMatch)
+            if (model.ETag() != ifMatch && model.ETag() != "*")
             {
                 return StatusCode((int)HttpStatusCode.PreconditionFailed);
             }

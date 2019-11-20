@@ -11,6 +11,11 @@ namespace Gargoyles.Services
 
         private Dictionary<string, GargoyleModel> gargoyles = new Dictionary<string, GargoyleModel>();
 
+
+        public Dictionary<string, GargoyleModel> Get()
+        {
+            return gargoyles;
+        }
         public GargoyleModel Get(string index)
         {
             return this.gargoyles[index];
