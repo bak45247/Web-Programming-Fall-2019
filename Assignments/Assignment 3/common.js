@@ -5,7 +5,7 @@ window.onload = function() {
     // These are for form 1
     document.getElementById("forcePush").onclick = postCharacter;
     document.getElementById("forcePull").onclick = getCharacter;
-    document.getElementById("forceRead").onclick = getRandomCharacter;
+    document.getElementById("forceRead").onclick = forceReadAsync;
     // These are for form 2
     document.getElementById("watchMovies").onclick = postView;
     document.getElementById("forceInsight").onclick = getView;
@@ -47,6 +47,20 @@ function getCharacter() {
             success: simpleSuccess,
             error: simpleError
         });
+}
+
+async function forceReadAsync() {
+    var response = await fetch(mainUrl);
+    var jsonResult = await response.json();
+    console.log(jsonResult);
+
+    var index = Math.floor(Math.random() * jsonResult.length)
+    console.log(index);
+
+    response = await fetch(mainUrl + "/" + index);
+    jsonResult = await response.json();
+
+    simpleSuccess(jsonResult);
 }
 
 //first step, gets all characters and sends them to the second step method
