@@ -1,4 +1,5 @@
 ﻿var mainUrl = "api/images";
+var apiVersion = document.getElementById(apiVersion).value
 
 function startUpload() {
     var name = document.getElementById("name").value;
@@ -14,24 +15,36 @@ function startUpload() {
         return;
     }
 
-    // TODO: make a POST request to your controller here, calling startUploadSuccess on a successful response from your server
-    $.ajax(mainUrl,
-    {
-        method: "POST",
-        success: startUploadSuccess,
-        error: showError,
-        contentType: "application/json",
-        processData: false,
-        data: JSON.stringify({
-            Name: name,
-            File: file
-        })
-    });
+    if (apiVersion == 1.0) {
+        $.ajax(mainUrl + "?api-version=" + apiVersion,
+            {
+                method: "POST",
+                success: startUploadSuccess,
+                error: showError,
+                contentType: "application/json",
+                processData: false,
+                data: JSON.stringify({
+                    Name: name,
+                    File: file
+                })
+            });
+    } else {
+        $.ajax(mainUrl + "?api-version=" + apiVersion,
+        {
+            method: "POST",
+            success: startUploadSuccess,
+            error: showError,
+            contentType: "application/json",
+            processData: false,
+            data: JSON.stringify({
+                Name: name,
+                File: file,
+                Description: document.getElementById("description").value
+            })
+        });
+    }
 }
 
-// hint for stretch level
-// speedSummary will have a method getCompletePercent() that you can use to display a progress bar of how much of the upload has completed so far.
-// this variable is set whenever you start a blob from a file
 var speedSummary;
 
 function showError(error) {
@@ -49,8 +62,6 @@ function startUploadSuccess(data) {
     var customBlockSize = file.size > 1024 * 1024 * 32 ? 1024 * 1024 * 4 : 1024 * 512;
     blobService.singleBlobPutThresholdInBytes = customBlockSize;
 
-    // data.userName is the blob container (you can think of this as a folder in the storage account)
-    // data.id is the blob (you can this of this as the actual file inside the container in the storage account)
     speedSummary = blobService.createBlockBlobFromBrowserFile(data.userName, data.id, file, { blockSize: customBlockSize }, function (error, result, response) {
         if (!error) {
             uploadComplete(data.id);
@@ -59,9 +70,7 @@ function startUploadSuccess(data) {
 }
 
 function uploadComplete(id) {
-    // TODO: make a POST request to your server to tell the upload is complete.
-    // then call refreshImages if the uploadComplete request is successful.
-    $.ajax(mainUrl + "/" + id + "/uploadComplete",
+    $.ajax(mainUrl + "/" + id + "/uploadComplete" + "?api-version=" + apiVersion,
     {
         method: "POST",
         success: refreshImages,
