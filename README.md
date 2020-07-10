@@ -17,3 +17,9 @@
 - JWT
 - Service Configuration
 - Logging
+
+## Solutions Used
+- Visual Studio
+- Visual Studio Code
+- Azure Cloud Storage
+- Amazon Web Servers
